@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import CreateListing from "./pages/CreateListing";
-import ShowListing from "./pages/ShowListing"; // Import ShowListing
+import ShowListing from "./pages/ShowListing"; 
 
 import { loginSuccess } from './features/authSlice';
 

@@ -1,12 +1,15 @@
-const User = require("../models/user");
+const Buyer = require("../models/user");
 const passport = require("passport");
 
 // Signup API
 module.exports.signup = async (req, res, next) => {
     try {
+        console.log("Signup req.body:", req.body);
         const { username, email, password } = req.body;
-        const newUser = new User({ email, username: email });
-        const registeredUser = await User.register(newUser, password);
+        const newUser = new Buyer({ email, username: email });
+        const registeredUser = await Buyer.register(newUser, password);
+        console.log("Registered user:", registeredUser);
+
         req.login(registeredUser, (err) => {
             if (err) {
                 return next(err);
@@ -33,14 +36,14 @@ module.exports.login = async (req, res, next) => {
                 message: "Email and password are required.",
             });
         }
-        const user = await User.findOne({ email });
+        const user = await Buyer.findOne({ email });
         if (!user) {
             return res.status(401).json({
                 success: false,
                 message: "User not found.",
             });
         }
-        User.authenticate()(email, password, (err, user, options) => {
+        Buyer.authenticate()(email, password, (err, user, options) => {
             if (err || !user) {
                 return res.status(401).json({
                     success: false,

@@ -4,6 +4,7 @@ if (process.env.NODE_ENV != "production") {
 
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
@@ -31,8 +32,10 @@ async function main() {
     await mongoose.connect(dbUrl);
 }
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(cors());
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -68,8 +71,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// Passport setup for users
+passport.use("user-local", new LocalStrategy(User.authenticate()));
+passport.serializeUser((user, done) =>
+    done(null, { id: user.id, type: "Buyer" })
+);
+passport.deserializeUser(async (obj, done) => {
+    if (obj.type === "Buyer") {
+        const user = await User.findById(obj.id);
+        done(null, user);
+    }
+});
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
