@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const ShowListing = () => {
-  const { id } = useParams(); // Get the ID from the URL
+  const { id } = useParams(); 
   const [pg, setPg] = useState(null);
 
   useEffect(() => {
-    // Fetch PG listing by ID from your API or data source
-    // Replace with your actual data fetching logic
     const fetchPG = async () => {
-      const response = await fetch(`/api/listing/${id}`); // Assuming you have an API for this
+      const response = await fetch(`/listings/${id}`); 
       const data = await response.json();
       setPg(data);
     };

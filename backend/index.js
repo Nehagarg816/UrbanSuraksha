@@ -7,7 +7,6 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
-const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -59,9 +58,9 @@ const sessionOptions = {
     },
 };
 
-// app.get("/", (req, res) => {
-//     res.send("Hi, I am root");
-// });
+// // app.get("/", (req, res) => {
+// //     res.send("Hi, I am root");
+// // });
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -79,28 +78,13 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.get("/demouser", async (req, res, next) => {
-//     let fakeUser = new User({
-//         email: "student@gmail.com",
-//         username: "student",
-//     });
-//     let newUser = await User.register(fakeUser, "helloworld");
-//     res.send(newUser);
-// });
-
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/user", userRouter);
 
-app.all("*", (req, res, next) => {
-    next(new ExpressError(404, "Page not found"));
-});
-
 app.use((err, req, res, next) => {
     let { status = 500, message = "something went wrong" } = err;
     res.status(status).send(message);
-    // res.status(status).render("error.ejs", { message });
-    // res.status(status).send(message);
 });
 
 app.listen(8080, () => {

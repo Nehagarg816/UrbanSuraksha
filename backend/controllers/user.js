@@ -1,43 +1,77 @@
 const User = require("../models/user");
+const passport = require("passport");
 
-// module.exports.renderSignupForm = (req, res) => {
-//     res.render("users/signup.ejs");
-// };
-module.exports.signup = async (req, res) => {
+// Signup API
+module.exports.signup = async (req, res, next) => {
     try {
-        let { username, email, password } = req.body;
-        const newUser = new User({ email, username });
+        const { username, email, password } = req.body;
+        const newUser = new User({ email, username: email });
         const registeredUser = await User.register(newUser, password);
-        console.log(registeredUser);
         req.login(registeredUser, (err) => {
             if (err) {
                 return next(err);
             }
-            req.flash("success", "Welcome to Wanderlust!");
-            // res.redirect("/listings");
+            return res.status(200).json({
+                data: { email: email },
+                success: true,
+                message: "Signup successful!",
+            });
         });
     } catch (e) {
-        req.flash("error", e.message);
-        // res.redirect("/signup");
+        console.log("Signup Error:", e.message);
+        return res.status(400).json({ success: false, message: e.message });
     }
 };
 
-// module.exports.renderLoginForm = (req, res) => {
-//     res.render("users/login.ejs");
-// };
+module.exports.login = async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
 
-module.exports.login = async (req, res) => {
-    req.flash("success", "Welcome to Wanderlust! You are logged in!");
-    // let redirectUrl = res.locals.redirectUrl || "/listings";
-    // res.redirect(redirectUrl);
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Email and password are required.",
+            });
+        }
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "User not found.",
+            });
+        }
+        User.authenticate()(email, password, (err, user, options) => {
+            if (err || !user) {
+                return res.status(401).json({
+                    success: false,
+                    message: "Invalid email or password.",
+                });
+            }
+            req.login(user, (loginErr) => {
+                if (loginErr) {
+                    return next(loginErr);
+                }
+
+                return res.status(200).json({
+                    data: { email: user.email },
+                    success: true,
+                    message: "User login successful!",
+                });
+            });
+        });
+    } catch (error) {
+        console.error("User Login Error:", error.message);
+        res.status(500).json({ success: false, message: "Server error." });
+    }
 };
 
-module.exports.logout = (req, res, next) => {
+// Logout API
+module.exports.logout = async (req, res) => {
     req.logout((err) => {
-        if (err) {
-            next(err);
-        }
-        req.flash("success", "you are logged out!");
-        // res.redirect("/listings");
+        if (err)
+            return res
+                .status(500)
+                .json({ success: false, message: err.message });
+        res.status(200).json({ success: true, message: "Logout successful!" });
     });
 };

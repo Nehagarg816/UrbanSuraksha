@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const { listingSchema } = require("../schema.js");
 const ExpressError = require("../utils/ExpressError.js");
 const Listing = require("../models/listing.js");
 const flash = require("connect-flash");
@@ -20,9 +19,6 @@ router
         validateListing,
         wrapAsync(listingController.createListing)
     );
-
-// //new route
-// router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 router
     .route("/:id")
