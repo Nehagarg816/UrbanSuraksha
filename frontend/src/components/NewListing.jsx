@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const NewListing = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   const handleCreateListing = () => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Or whatever key you use
-
     if (isLoggedIn) {
       navigate('/create');
     } else {
