@@ -1,0 +1,88 @@
+/* CreateListing.css */
+
+body {
+    background-color: #fff0f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Wrapper for the form with spacing from navbar */
+  .create-listing-container {
+    max-width: 600px;
+    margin: 80px auto 40px auto; /* pushes it down from navbar */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(255, 182, 193, 0.3);
+    border: 1px solid #ffd6de;
+  }
+  
+  /* Form Heading */
+  .create-listing-container h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 25px;
+  }
+  
+  /* Input Labels */
+  .create-listing-container label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  /* Inputs and Textareas */
+  .create-listing-container input[type="text"],
+  .create-listing-container input[type="number"],
+  .create-listing-container input[type="file"],
+  .create-listing-container textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #f8d7da;
+    border-radius: 8px;
+    background-color: #fffafc;
+    color: #333;
+    margin-bottom: 20px;
+    transition: 0.3s;
+  }
+  
+  .create-listing-container input:focus,
+  .create-listing-container textarea:focus {
+    border-color: #ffb6c1;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.25);
+  }
+  
+  /* Flex row */
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .flex-row > div {
+    flex: 1;
+    min-width: 48%;
+  }
+  
+  /* Submit Button */
+  .create-listing-container button[type="submit"] {
+    background-color: #ffc0cb;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
+  }
+  
+  .create-listing-container button[type="submit"]:hover {
+    background-color: #ff69b4;
+    color: white;
+  }
+  

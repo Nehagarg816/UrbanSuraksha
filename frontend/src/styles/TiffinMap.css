@@ -1,0 +1,55 @@
+.tiffin-container {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 2rem;
+  }
+  
+  .tiffin-search {
+    width: 35%;
+  }
+  
+  .tiffin-search input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .tiffin-search button {
+    padding: 0.5rem 1rem;
+    background-color: #ff5c8a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .tiffin-search ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .tiffin-search li {
+    margin-top: 1rem;
+    background: #fff6f8;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  }
+  
+  .order-btn {
+    margin-top: 0.5rem;
+    padding: 6px 12px;
+    background: #f24e6f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .tiffin-map {
+    width: 65%;
+    height: 500px;
+  }
+  
