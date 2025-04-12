@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>UrbanSuraksha - Your Smart PG Companion</title>
+<!--   <title>UrbanSuraksha - Your Smart PG Companion</title> -->
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px;">
 
