@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/authSlice";
 
 const Navbar = () => {
-  // eslint-disable-next-line no-unused-vars
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,13 +32,21 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-4">
           {isLoggedIn && user ? (
             <div className="flex items-center space-x-4">
-              <span className="text-black font-medium cursor-pointer">{user.email}</span>
+              <span className="text-black font-medium cursor-pointer">
+                {user.email}
+              </span>
               <button
                 onClick={handleLogout}
                 className="bg-gray-50 text-[#023c73] py-2 px-4 rounded-full font-medium shadow-md hover:bg-gray-200 cursor-pointer"
               >
                 Logout
               </button>
+              <Link
+                to="/dashboard"
+                className="bg-gray-50 text-[#023c73] py-2 px-4 rounded-full font-medium shadow-md hover:bg-gray-200"
+              >
+                Dashboard
+              </Link>
             </div>
           ) : (
             <button
@@ -59,7 +66,7 @@ const Navbar = () => {
         } md:hidden flex justify-evenly mt-2 w-full rounded-lg p-4`}
       >
         {isLoggedIn && user ? (
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-col items-center space-y-2">
             <span className="text-black font-medium">{user.email}</span>
             <button
               onClick={handleLogout}
@@ -67,6 +74,12 @@ const Navbar = () => {
             >
               Logout
             </button>
+            <Link
+              to="/dashboard"
+              className="bg-white text-[#023c73] py-2 px-4 rounded-full font-medium shadow-md hover:bg-gray-200"
+            >
+              Dashboard
+            </Link>
           </div>
         ) : (
           <button
