@@ -6,7 +6,7 @@
 
 <h3>Explore the App Now! 🏠</h3>
 
-# Tech Stack<br>
+## Tech Stack<br>
 <details>
   <summary>Front-end</summary>  <br>
   
@@ -38,15 +38,15 @@
 <ul>
   <li>Explore PGs using filters (location, rent, food, etc.) and integrated Google Maps for exact locality.
     <br><br>
-    <img src="![Screenshot 2025-04-12 120923](https://github.com/user-attachments/assets/def87b5e-8fdf-4b3b-b394-25eb43cd3bd4)" alt="explore pg" width="550">
+    <img src="https://github.com/user-attachments/assets/def87b5e-8fdf-4b3b-b394-25eb43cd3bd4" alt="explore pg" width="550">
   </li>
   <li>Sign up or log in to explore PG listings and access personalized features.
     <br><br>
-    <img src="![Screenshot 2025-04-12 120952](https://github.com/user-attachments/assets/ac809693-61e7-433f-90af-fcbb3d82a6cd)" alt="login/signup" width="550">
+    <img src="https://github.com/user-attachments/assets/ac809693-61e7-433f-90af-fcbb3d82a6cd" alt="login/signup" width="550">
   </li>
   <li>List your own PG with location, services, and pricing along with images.
     <br><br>
-    <img src="![Screenshot 2025-04-12 121018](https://github.com/user-attachments/assets/e65523e4-667f-4ff8-987a-bf7ae39bc58c)" alt="pg listing" width="550">
+    <img src="https://github.com/user-attachments/assets/e65523e4-667f-4ff8-987a-bf7ae39bc58c" alt="pg listing" width="550">
   </li>
 
   <li>Rate and review PGs based on your experience to help others make better choices.
@@ -55,11 +55,11 @@
   </li>
   <li>Bill tracking system for PG owners and tenants for monthly rent and food expenses.
     <br><br>
-    <img src="![WhatsApp Image 2025-04-10 at 01 29 05_3fbd6ce6](https://github.com/user-attachments/assets/72c5d4d3-92ea-4a77-a163-5aa50b235b41)" alt="bill tracking" width="550">
+    <img src="https://github.com/user-attachments/assets/72c5d4d3-92ea-4a77-a163-5aa50b235b41" alt="bill tracking" width="550">
   </li>
   <li>Dedicated tiffin services with subscription and availability for each PG.
     <br><br>
-    <img src="![WhatsApp Image 2025-04-10 at 01 29 06_8d3a9810](https://github.com/user-attachments/assets/4cd0adde-7125-4f79-a697-89b4dfc305a2)" alt="tiffin services" width="550">
+    <img src="https://github.com/user-attachments/assets/4cd0adde-7125-4f79-a697-89b4dfc305a2" alt="tiffin services" width="550">
   </li>
 </ul>
 
