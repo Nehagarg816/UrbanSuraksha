@@ -21,10 +21,10 @@ const listingSchema = new Schema({
             ref: "pgReview",
         },
     ],
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: "Buyer",
-    },
+    // owner: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Buyer",
+    // },
 });
 
 listingSchema.post("findOneAndDelete", async (listing) => {

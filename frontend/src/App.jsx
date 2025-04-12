@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/create" element={<CreateListing />} />
         <Route path="/login" element={<AuthPage />} />
         <Route path="/signup" element={<AuthPage />} />
-        <Route path="/listing/:id" element={<ShowListing />} /> {/* Dynamic Route */}
+        <Route path="/listings/:id" element={<ShowListing />} /> {/* Dynamic Route */}
       </Routes>
     </Router>
   );

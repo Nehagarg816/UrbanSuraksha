@@ -35,7 +35,13 @@ async function main() {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-app.use(cors());
+app.use(
+    cors({
+        origin: "http://localhost:5173", // adjust if your frontend runs on a different port
+        credentials: true,
+    })
+);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,

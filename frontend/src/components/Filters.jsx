@@ -49,7 +49,7 @@ const Filters = () => {
                 placeholder="Search PG, location, or service..."
                 className="bg-transparent outline-none flex-1 text-sm"
               />
-              <button className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-1.5 rounded-full ml-2 text-sm">
+              <button className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-1.5 rounded-full ml-2 text-sm cursor-pointer">
                 Search
               </button>
             </div>
