@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(
     cors({
-        origin: "http://localhost:5173", // adjust if your frontend runs on a different port
+        origin: "https://urbansuraksha.onrender.com", // adjust if your frontend runs on a different port
         credentials: true,
     })
 );
