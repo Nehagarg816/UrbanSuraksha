@@ -63,6 +63,14 @@
   </li>
 </ul>
 
+##🚀 Future Scope
+<ul>
+  <li>Location can be visualized using maps for tiffin services and other nearby facilities.</li>
+  <li>Payment gateway integration for secure online rent and service payments.</li>
+  <li>Filter PGs based on highest and lowest ratings to assist in better decision-making.</li>
+  <li>Raise complaints with image uploads and track resolution status in real-time.</li>
+  <li>Community group/chatroom feature for residents of a PG to connect and coordinate.</li>
+</ul>
 
 ---
 
