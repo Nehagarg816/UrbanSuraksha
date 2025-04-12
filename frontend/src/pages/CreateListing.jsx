@@ -47,7 +47,7 @@ const CreateListing = () => {
     form.append("image", formData.image);
 
     try {
-      const response = await fetch("http://localhost:8080/listings", {
+      const response = await fetch("https://urbansuraksha-backend.onrender.com/listings", {
         method: "POST",
         body: form,
         credentials: "include",
