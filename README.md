@@ -64,7 +64,7 @@
     <li>Rate and review PGs based on your experience to help others make better choices.</li>
     <li>
       Bill tracking system for PG owners and tenants for monthly rent and food expenses.<br><br>
-      <img src="https://github.com/user-attachments/assets/72c5d4d3-92ea-4a77-a163-5aa50b235b41" alt="bill tracking" width="550">
+      <img src="https://github.com/user-attachments/assets/8faf57c0-910e-493d-970a-bca5d1cd8ddf" alt="bill tracking" width="550">
     </li>
     <li>
       Dedicated tiffin services with subscription and availability for each PG.<br><br>
