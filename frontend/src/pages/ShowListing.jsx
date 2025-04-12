@@ -1,47 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// src/pages/ShowListing.jsx
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import sampleListings from '../data/sampleListings';
 
 const ShowListing = () => {
-  const { id } = useParams(); 
-  const [pg, setPg] = useState(null);
+  const { id } = useParams();
+  const listing = sampleListings.find((l) => l.id === parseInt(id));
 
-  useEffect(() => {
-    const fetchPG = async () => {
-      const response = await fetch(`/listings/${id}`); 
-      const data = await response.json();
-      setPg(data);
-    };
-
-    fetchPG();
-  }, [id]);
-
-  if (!pg) return <div>Loading...</div>;
+  if (!listing) return <p className="p-6">Listing not found!</p>;
 
   return (
-    <div className="flex flex-col items-center px-4 py-6">
-      <h1 className="text-3xl font-semibold mb-6">{pg.name}</h1>
-
-      <div className="rounded-xl overflow-hidden shadow-lg w-full max-w-3xl">
-        <img src={pg.imageUrl} alt={pg.name} className="w-full h-64 object-cover" />
-      </div>
-
-      <div className="w-full max-w-3xl mt-4 text-center">
-        <p className="text-gray-600">
-          Owned by <span className="italic">{pg.owner}</span>
-        </p>
-        <p className="mt-2 text-lg text-gray-700">{pg.description}</p>
-        <p className="mt-2 text-xl font-medium text-pink-600">₹{pg.price}</p>
-        <p className="mt-1 text-gray-700">{pg.location}</p>
-        <p className="text-gray-700">{pg.country}</p>
-
-        <div className="mt-4 flex justify-center gap-4">
-          <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-xl text-sm shadow">
-            Edit
-          </button>
-          <button className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 rounded-xl text-sm shadow">
-            Delete
-          </button>
-        </div>
+    <div className="max-w-3xl mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-4">{listing.title}</h1>
+      <img
+        src={listing.image}
+        alt={listing.title}
+        className="rounded-lg mb-4 w-full"
+      />
+      <p className="text-lg mb-2">Owned by <i>{listing.owner}</i></p>
+      <p className="text-gray-700 mb-4">{listing.description}</p>
+      <p className="text-xl font-semibold mb-1">₹{listing.price}</p>
+      <p className="text-md text-gray-800">{listing.location}</p>
+      <p className="text-md text-gray-800 mb-6">{listing.country}</p>
+      <div className="flex gap-4">
+        <button className="bg-[#ff4d4f] text-white px-4 py-2 rounded hover:bg-[#d9363e]">Edit</button>
+        <button className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Delete</button>
       </div>
     </div>
   );
