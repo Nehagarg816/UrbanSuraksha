@@ -29,7 +29,7 @@ const AuthForm = () => {
     try {
       console.log("Sending to backend:", formData);
 
-      const response = await fetch(`http://localhost:8080/user/${endpoint}`, {
+      const response = await fetch(`https://urbansuraksha-backend.onrender.com/user/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
