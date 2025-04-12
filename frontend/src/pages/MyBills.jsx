@@ -3,8 +3,17 @@ import "../styles/MyBills.css";
 
 const initialBills = [
   { title: "Monthly Rent", amount: "₹8000", date: "2025-04-01", category: "Rent" },
-  { title: "Electricity", amount: "₹1200", date: "2025-04-05", category: "Utilities" },
+  { title: "Electricity Bill", amount: "₹1200", date: "2025-04-05", category: "Utilities" },
   { title: "Tiffin Service", amount: "₹3000", date: "2025-04-07", category: "Food" },
+  { title: "Internet / WiFi", amount: "₹600", date: "2025-04-06", category: "Utilities" },
+  { title: "Laundry Services", amount: "₹400", date: "2025-04-09", category: "Personal Care" },
+  { title: "Drinking Water Supply", amount: "₹150", date: "2025-04-03", category: "Utilities" },
+  { title: "Gas Cylinder", amount: "₹950", date: "2025-04-11", category: "Kitchen" },
+  { title: "Housekeeping Charges", amount: "₹500", date: "2025-04-10", category: "Maintenance" },
+  { title: "Maintenance Fee", amount: "₹700", date: "2025-04-12", category: "Maintenance" },
+  { title: "Milk Subscription", amount: "₹450", date: "2025-04-02", category: "Food" },
+  { title: "Room Heater Electricity Overuse", amount: "₹350", date: "2025-04-04", category: "Utilities" },
+  { title: "TV Recharge (Shared)", amount: "₹200", date: "2025-04-08", category: "Entertainment" },
 ];
 
 const MyBills = () => {
@@ -16,7 +25,7 @@ const MyBills = () => {
   const [bills, setBills] = useState(getStoredBills);
   const [selectedBill, setSelectedBill] = useState(null);
   const [showDialog, setShowDialog] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState(null); // null | "success" | "failed"
+  const [paymentStatus, setPaymentStatus] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("myBills", JSON.stringify(bills));
@@ -31,7 +40,7 @@ const MyBills = () => {
   const simulatePayment = () => {
     setPaymentStatus("loading");
     setTimeout(() => {
-      const isSuccess = Math.random() > 0.2; // 80% success chance
+      const isSuccess = Math.random() > 0.2;
       setPaymentStatus(isSuccess ? "success" : "failed");
 
       if (isSuccess) {
@@ -52,9 +61,18 @@ const MyBills = () => {
     }, 1500);
   };
 
+  const handleResetBills = () => {
+    localStorage.removeItem("myBills");
+    setBills(initialBills);
+  };
+
   return (
     <div className="bills-container">
-      <h2>My Bills</h2>
+      <div className="bills-header">
+        <h2>My Bills</h2>
+        <button className="reset-btn" onClick={handleResetBills}>Reset Bills</button>
+      </div>
+
       <div className="bills-layout">
         <div className="bills-list">
           {bills.map((bill, index) => (
@@ -89,7 +107,6 @@ const MyBills = () => {
         </div>
       </div>
 
-      {/* Payment Dialog */}
       {showDialog && selectedBill && (
         <div className="payment-dialog">
           <div className="dialog-content">

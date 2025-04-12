@@ -16,7 +16,10 @@ function Sidebar() {
           <li onClick={() => navigate('/dashboard')} style={{ cursor: 'pointer' }}>Dashboard</li>
           <li><Link to="/dashboard/bills">My Bills</Link></li>
           <li><Link to="/dashboard/tiffin">Tiffin Service Near Me</Link></li>
+          <li><Link to="/dashboard/complaint">File Complaint</Link></li>
+
           <li onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Home</li>
+
         </ul>
       </nav>
     </div>

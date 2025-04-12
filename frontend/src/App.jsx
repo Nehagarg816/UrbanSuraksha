@@ -1,30 +1,30 @@
-import React, { useEffect } from "react";
-import {useState} from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import HomePage from "./pages/HomePage";
 import AuthPage from "./pages/AuthPage";
 import CreateListing from "./pages/CreateListing";
-import ShowListing from "./pages/ShowListing"; 
+import ShowListing from "./pages/ShowListing";
 import Dashboard from "./pages/Dashboard";
+import MyBills from "./pages/MyBills";
+import TiffinMap from "./pages/TiffinMap";
+import FileComplaint from "./pages/FileComplaint";
+
 import Sidebar from "./layout/Sidebar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
 import "./styles/Layout.css";
-import { loginSuccess } from './features/authSlice';
-import MyBills from "./pages/MyBills";
-import TiffinMap from "./pages/TiffinMap";
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
+import { loginSuccess } from "./features/authSlice";
 
 
-// Helper component to handle conditional layout
+// Layout wrapper to conditionally show layout elements
 const LayoutWrapper = ({ children }) => {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  // Define paths where the full dashboard layout should be shown
   const isDashboardLayout = location.pathname.startsWith("/dashboard");
 
   if (isDashboardLayout) {
@@ -40,14 +40,61 @@ const LayoutWrapper = ({ children }) => {
     );
   }
 
-  // For public routes like Home, Login, Create, etc.
+  return <>{children}</>;
+};
+
+
+// Inner App that uses LayoutWrapper + Routes
+const AppContent = () => {
   return (
-    <>
-      {children}
-    </>
+    <Routes>
+      {/* Public Routes */}
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<AuthPage />} />
+      <Route path="/signup" element={<AuthPage />} />
+      <Route path="/create" element={<CreateListing />} />
+      <Route path="/listing/:id" element={<ShowListing />} />
+
+      {/* Dashboard Routes (inside layout) */}
+      <Route
+        path="/dashboard"
+        element={
+          <LayoutWrapper>
+            <Dashboard />
+          </LayoutWrapper>
+        }
+      />
+      <Route
+        path="/dashboard/bills"
+        element={
+          <LayoutWrapper>
+            <MyBills />
+          </LayoutWrapper>
+        }
+      />
+      <Route
+        path="/dashboard/tiffin"
+        element={
+          <LayoutWrapper>
+            <TiffinMap />
+          </LayoutWrapper>
+        }
+      />
+      <Route
+  path="/dashboard/complaint"
+  element={
+    <LayoutWrapper>
+      <FileComplaint />
+    </LayoutWrapper>
+  }
+/>
+
+    </Routes>
   );
 };
 
+
+// Final App with Redux + Cookie check
 const App = () => {
   const dispatch = useDispatch();
 
@@ -62,13 +109,7 @@ const App = () => {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<CreateListing />} />
-        <Route path="/login" element={<AuthPage />} />
-        <Route path="/signup" element={<AuthPage />} />
-        <Route path="/listing/:id" element={<ShowListing />} /> {/* Dynamic Route */}
-      </Routes>
+      <AppContent />
     </Router>
   );
 };
