@@ -63,7 +63,7 @@
     </li>
     <li>Rate and review PGs based on your experience to help others make better choices.</li>
     <li>
-      Bill tracking system for PG owners and tenants for monthly rent and food expenses.<br><br>
+      Dashboard for User for smooth management and track of bill analytics.<br><br>
       <img src="https://github.com/user-attachments/assets/8faf57c0-910e-493d-970a-bca5d1cd8ddf" alt="bill tracking" width="550">
     </li>
     <li>
