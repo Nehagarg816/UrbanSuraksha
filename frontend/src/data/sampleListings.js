@@ -1,5 +1,3 @@
-// src/data/sampleListings.js
-
 const sampleListings = [
     {
         id: 1,
