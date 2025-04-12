@@ -63,7 +63,7 @@
   </li>
 </ul>
 
-##🚀 Future Scope
+## Future Scope
 <ul>
   <li>Location can be visualized using maps for tiffin services and other nearby facilities.</li>
   <li>Payment gateway integration for secure online rent and service payments.</li>
